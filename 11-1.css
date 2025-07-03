@@ -1,0 +1,26 @@
+body {
+    font-family: 'Times New Roman', Times, serif;
+    margin: 40px;
+}
+.quiz-container {
+    border: 1px solid #e50808;
+    padding: 20px;
+    width: 350px;
+    margin: auto;
+}
+.question {
+    margin-bottom: 15px;
+}
+.options label {
+    display: block;
+    margin-bottom: 5px;
+}
+#result {
+    font-weight: bold;
+    margin-top: 15px;
+}
+.button-container {
+    text-align: right;
+    margin-top: 20px;
+    background-color: lightgreen;
+}

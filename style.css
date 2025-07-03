@@ -1,0 +1,25 @@
+    body {
+        color: rgb(48, 188, 85);
+        font-family: verdana;
+        background: lavender;
+    }
+    
+    p {
+        color: rgb(13, 135, 176);
+        font-weight: bold;
+    }
+    
+    ul {
+        color: rgb(247, 91, 7);
+        font-style: inherit;
+        font-weight: bold;
+    }
+    
+    strong {
+        color: blue;
+    }
+    
+    h1 {
+        color: rgb(173, 247, 0);
+        background-color: chocolate;
+    }

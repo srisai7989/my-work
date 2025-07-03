@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Quiz</title>
+    <link rel="stylesheet" href="11-1.css">
+</head><center><h1>Quiz</h1></center>
+<body>
+    <div class="quiz-container">
+        <form id="quizForm">
+            <div class="question">
+                <p>1. Who is the founder of Microsoft?</p>
+                <div class="options">
+                    <label><input type="radio" name="q1" value="Steve Jobs"> Steve Jobs</label>
+                    <label><input type="radio" name="q1" value="Elon Musk"> Elon Musk</label>
+                    <label><input type="radio" name="q1" value="Bill Gates"> Bill Gates</label>
+                </div>
+            </div>
+            <div class="question">
+                <p>2. What is the chemical symbol for water?</p>
+                <div class="options">
+                    <label><input type="radio" name="q2" value="O2"> O<sub>2</sub></label>
+                    <label><input type="radio" name="q2" value="H2O"> H<sub>2</sub>O</label>
+                    <label><input type="radio" name="q2" value="CO2"> CO<sub>2</sub></label>
+                </div>
+            </div>
+            <div class="question">
+                <p>3. Which programming language is known as the backbone of web development?</p>
+                <div class="options">
+                    <label><input type="radio" name="q3" value="Python"> Python</label>
+                    <label><input type="radio" name="q3" value="JavaScript"> JavaScript</label>
+                    <label><input type="radio" name="q3" value="C++"> C++</label>
+                </div>
+            </div>
+            <div class="question">
+                <p>4. Which planet is known as the Red Planet?</p>
+                <div class="options">
+                    <label><input type="radio" name="q4" value="Venus"> Venus</label>
+                    <label><input type="radio" name="q4" value="Saturn"> Saturn</label>
+                    <label><input type="radio" name="q4" value="Mars"> Mars</label>
+                </div>
+            </div>
+           <center> <input  class ="button-container" type="button" value="Submit" onclick="checkQuiz()"  ></center>
+        </form>
+        <div id="result"></div>
+    </div>
+    <script src="11-1.js"></script>
+</body>
+</html>

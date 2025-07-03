@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registration Form validation</title>
+
+</head>
+<body>
+  <form onsubmit="return validateForm()">
+    <table border="1">
+      <tr>
+        <th colspan="2">Registration Form validation</th>
+      </tr>
+      <tr>
+        <td><b>First Name:</b></td>
+        <td><input type="text" id="firstname" ></td>
+      </tr>
+      <tr>
+        <td><b>Last Name:</b></td>
+        <td><input type="text" id="lastname" ></td>
+      </tr>
+      <tr>
+        <td><b>Gender:</b></td>
+        <td>
+          Male <input type="radio" name="gender" value="Male" >
+          Female <input type="radio" name="gender" value="Female">
+        </td>
+      </tr>
+      <tr>
+        <td><b>Mobile Number:</b></td>
+        <td><input type="tel" id="mobile" ></td>
+      </tr>
+      <tr>
+        <td><b>Email id:</b></td>
+        <td><input type="email" placeholder="domain@gmail.com" id="email" ></td>
+      </tr>
+      <tr>
+        <td colspan="2" style="text-align:center;">
+          <input type="submit" value="Registration">
+          <input type="reset" value="reset">
+        </td>
+      </tr>
+    </table>
+  </form>
+
+  <script>
+    function validateForm() {
+      let fname = document.getElementById("firstname").value.trim();
+      let lname = document.getElementById("lastname").value.trim();
+      let mobile = document.getElementById("mobile").value.trim();
+      let email = document.getElementById("email").value.trim();
+      let genderSelected = document.querySelector('input[name="gender"]:checked');
+
+      // First name check
+    const nameRegex = /^[A-Za-z]+$/;
+            if (!nameRegex.test(firstName)) {
+                alert("First name should contain only letters.");
+                return false;
+            }
+
+            if (!nameRegex.test(lastName)) {
+                alert("Last name should contain only letters.");
+                return false;
+            }
+
+
+      // Gender check
+      if (!genderSelected) {
+        alert("Please select gender");
+        return false;
+      }
+
+      // Mobile number check
+      let mobilePattern = /^[0-9]{10}$/;
+      if (!mobilePattern.test(mobile)) {
+        alert("Please enter a valid 10-digit mobile number");
+        return false;
+      }
+
+      // Email check
+      let emailPattern = /^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
+      if (!emailPattern.test(email)) {
+        alert("Please enter a valid email address");
+        return false;
+      }
+
+      alert("Registration Successful!");
+      return true;
+    }
+  </script>
+</body>
+</html>

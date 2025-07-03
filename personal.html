@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Personal Website</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #7CB342;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .webpage-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #8BC34A;
+            border: 3px solid #689F38;
+            border-radius: 10px;
+            padding: 20px;
+            min-height: calc(100vh - 40px);
+            display: grid;
+            grid-template-areas: "header navigation" "main-content sidebar" "footer footer";
+            grid-template-columns: 2fr 1fr;
+            grid-template-rows: auto 1fr auto;
+            gap: 15px;
+        }
+        /* Header */
+        
+        .header {
+            grid-area: header;
+            background-color: #689F38;
+            border: 2px solid #558B2F;
+            border-radius: 10px;
+            padding: 30px;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+        
+        .header::before {
+            content: "Header";
+            position: absolute;
+            top: 10px;
+            left: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            margin-top: 20px;
+        }
+        
+        .header p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+        }
+        /* Navigation Bar */
+        
+        .navigation {
+            grid-area: navigation;
+            background-color: #689F38;
+            border: 2px solid #558B2F;
+            border-radius: 10px;
+            padding: 20px;
+            position: relative;
+        }
+        
+        .navigation::before {
+            content: "Navigation bar";
+            position: absolute;
+            top: 10px;
+            left: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+        }
+        
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 30px;
+        }
+        
+        .nav-menu li {
+            background-color: #558B2F;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-menu li:hover {
+            background-color: #4CAF50;
+            transform: translateX(5px);
+        }
+        
+        .nav-menu a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 15px 20px;
+            font-weight: bold;
+            border-radius: 8px;
+        }
+        
+        .nav-menu a.active {
+            background-color: #4CAF50;
+        }
+        /* Main Content Area */
+        
+        .main-content {
+            grid-area: main-content;
+            background-color: #689F38;
+            border: 2px solid #558B2F;
+            border-radius: 10px;
+            padding: 30px;
+            position: relative;
+            color: white;
+        }
+        
+        .main-content::before {
+            content: "Main content area";
+            position: absolute;
+            top: 15px;
+            left: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .content-section {
+            display: none;
+            margin-top: 40px;
+        }
+        
+        .content-section.active {
+            display: block;
+        }
+        
+        .content-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: #E8F5E8;
+            border-bottom: 3px solid #4CAF50;
+            padding-bottom: 10px;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 30px;
+            align-items: start;
+        }
+        
+        .profile-image {
+            width: 180px;
+            height: 180px;
+            background-color: #4CAF50;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+            border: 4px solid #558B2F;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .about-text p {
+            margin-bottom: 15px;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .skill-item {
+            background-color: #4CAF50;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: bold;
+            border: 2px solid #558B2F;
+            transition: transform 0.3s ease;
+        }
+        
+        .skill-item:hover {
+            transform: scale(1.05);
+            background-color: #45a049;
+        }
+        
+        .experience-item,
+        .education-item {
+            background-color: #558B2F;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            border: 2px solid #4CAF50;
+        }
+        
+        .experience-item h3,
+        .education-item h3 {
+            color: #E8F5E8;
+            margin-bottom: 8px;
+            font-size: 1.3rem;
+        }
+        
+        .experience-item .date,
+        .education-item .date {
+            color: #C8E6C9;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+        /* Sidebar */
+        
+        .sidebar {
+            grid-area: sidebar;
+            background-color: #689F38;
+            border: 2px solid #558B2F;
+            border-radius: 10px;
+            padding: 20px;
+            position: relative;
+            color: white;
+            height: fit-content;
+        }
+        
+        .sidebar::before {
+            content: "Sidebar";
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .sidebar h3 {
+            margin-top: 30px;
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+            color: #E8F5E8;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 8px;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .contact-item {
+            background-color: #558B2F;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #4CAF50;
+            text-align: center;
+        }
+        
+        .contact-item .label {
+            display: block;
+            font-weight: bold;
+            color: #C8E6C9;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+        }
+        
+        .contact-item .value {
+            color: white;
+            font-size: 0.95rem;
+        }
+        /* Footer */
+        
+        .footer {
+            grid-area: footer;
+            background-color: #689F38;
+            border: 2px solid #558B2F;
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        
+        .footer::before {
+            content: "Footer";
+            position: absolute;
+            top: 10px;
+            left: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .footer p {
+            margin-top: 15px;
+            font-size: 1.1rem;
+        }
+        /* Responsive Design */
+        
+        @media (max-width: 768px) {
+            .webpage-container {
+                grid-template-areas: "header" "navigation" "main-content" "sidebar" "footer";
+                grid-template-columns: 1fr;
+                padding: 15px;
+            }
+            .nav-menu {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="webpage-container">
+        <!-- Header Section -->
+        <header class="header">
+            <h1>Bijjala risai</h1>
+            <p>Student</p>
+        </header>
+
+        <!-- Navigation Bar -->
+        <nav class="navigation">
+            <ul class="nav-menu">
+                <li><a href="#" class="nav-link active" data-section="about">About</a></li>
+                <li><a href="#" class="nav-link" data-section="skills">Skills</a></li>
+                <li><a href="#" class="nav-link" data-section="experience">Experience</a></li>
+                <li><a href="#" class="nav-link" data-section="education">Education</a></li>
+                <li><a href="#" class="nav-link" data-section="contact">Contact</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- About Section -->
+            <section class="content-section active" id="about">
+                <h2>About Me</h2>
+                <div class="about-content">
+                    <div class="profile-image">👤</div>
+                    <div class="about-text">
+                        <p>Welcome to my personal website! I'm a passionate professional dedicated to creating innovative solutions and delivering exceptional results.</p>
+                        <p>With years of experience in my field, I bring a unique combination of technical expertise and creative problem-solving to every project I work on.</p>
+                        <p>I believe in continuous learning, collaboration, and making a positive impact through my work. Let's connect and explore how we can work together!</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Skills Section -->
+            <section class="content-section" id="skills">
+                <h2>Skills & Technologies</h2>
+                <div class="skills-grid">
+                    <div class="skill-item">Web Development</div>
+                    <div class="skill-item">JavaScript</div>
+                    <div class="skill-item">Python</div>
+                    <div class="skill-item">React</div>
+                    <div class="skill-item">Node.js</div>
+                    <div class="skill-item">CSS/HTML</div>
+                    <div class="skill-item">Project Management</div>
+                    <div class="skill-item">Team Leadership</div>
+
+                    <div class="skill-item">Data Analysis</div>
+                </div>
+            </section>
+
+            <!-- Experience Section -->
+            <section class="content-section" id="experience">
+                <h2>Work Experience</h2>
+                <div class="experience-item">
+                    <h3>Senior Developer</h3>
+                    <div class="date">2022 - Present</div>
+                    <p>Leading development projects and mentoring team members. Responsible for architecting scalable solutions and implementing best practices.</p>
+                </div>
+                <div class="experience-item">
+                    <h3>Web Developer</h3>
+                    <div class="date">2020 - 2022</div>
+                    <p>Developed responsive websites and applications. Collaborated with cross-functional teams to deliver high-quality products.</p>
+                </div>
+                <div class="experience-item">
+                    <h3>Junior Developer</h3>
+                    <div class="date">2018 - 2020</div>
+                    <p>Started career building web applications and learning industry best practices. Contributed to multiple successful projects.</p>
+                </div>
+            </section>
+
+            <!-- Education Section -->
+            <section class="content-section" id="education">
+                <h2>Education</h2>
+                <div class="education-item">
+                    <h3>Bachelor of Computer Science</h3>
+                    <div class="date">University Name - 2018</div>
+                    <p>Focused on software development, algorithms, and system design. Participated in coding competitions and collaborative projects.</p>
+                </div>
+                <div class="education-item">
+                    <h3>Web Development Certification</h3>
+                    <div class="date">Online Academy - 2019</div>
+                    <p>Specialized training in modern web technologies and frameworks.</p>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section class="content-section" id="contact">
+                <h2>Get In Touch</h2>
+                <p>I'm always open to new opportunities and interesting conversations. Whether you want to discuss a project, collaboration, or just say hello, feel free to reach out!</p>
+                <br>
+                <div style="background-color: #558B2F; padding: 25px; border-radius: 10px; border: 2px solid #4CAF50;">
+                    <h3 style="color: #E8F5E8; margin-bottom: 15px;">Let's Connect</h3>
+                    <p>You can find my contact details in the sidebar, or connect with me through any of the listed platforms. I look forward to hearing from you!</p>
+                </div>
+            </section>
+        </main>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h3>Contact Information</h3>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span class="label">📧 EMAIL</span>
+                    <span class="value">your.email@example.com</span>
+                </div>
+                <div class="contact-item">
+                    <span class="label">📱 PHONE</span>
+                    <span class="value">+1 (555) 123-4567</span>
+                </div>
+                <div class="contact-item">
+                    <span class="label">💼 LINKEDIN</span>
+                    <span class="value">linkedin.com/in/yourprofile</span>
+                </div>
+                <div class="contact-item">
+                    <span class="label">📍 LOCATION</span>
+                    <span class="value">Your City, Country</span>
+                </div>
+                <div class="contact-item">
+                    <span class="label">🌐 WEBSITE</span>
+                    <span class="value">yourportfolio.com</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2025 Your Name. All rights reserved. | Professional Personal Website</p>
+        </footer>
+    </div>
+
+    <script>
+        // Navigation functionality
+        const navLinks = document.querySelectorAll('.nav-link');
+        const contentSections = document.querySelectorAll('.content-section');
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+
+                // Remove active class from all nav links
+                navLinks.forEach(nav => nav.classList.remove('active'));
+
+                // Add active class to clicked nav link
+                link.classList.add('active');
+
+                // Hide all content sections
+                contentSections.forEach(section => section.classList.remove('active'));
+
+                // Show the selected content section
+                const targetSection = link.getAttribute('data-section');
+                document.getElementById(targetSection).classList.add('active');
+            });
+        });
+    </script>
+</body>
+
+</html>

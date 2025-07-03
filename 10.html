@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">click</button>
+    <p id="text">double click on this text</p>
+    <p id="heading">mouse over!</p>
+    <p id="para">mouseout event</p>
+    <input id="inputField" placeholder="Press any key">
+    <input id="focusInput" placeholder="Press any key">
+    <input id="blurInput" placeholder="Press any key">
+    <select id="dropdown">
+        <option>option1</option>
+        <option>option2</option>
+    </select>
+
+    <script>
+        // Button click
+        document.getElementById("btn").addEventListener("click", function() {
+            alert("Button was clicked");
+        });
+
+        // Double click
+        document.getElementById("text").addEventListener("dblclick", function() {
+            this.style.color = "red";
+        });
+
+        // Mouse over
+        document.getElementById("heading").addEventListener("mouseover", function() {
+            this.style.color = "blue";
+        });
+
+        // Mouse out
+        document.getElementById("para").addEventListener("mouseout", function() {
+            this.style.backgroundColor = "lavender";
+        });
+
+        // Key down (anywhere on the page)
+        document.addEventListener("keydown", function(event) {
+            console.log("Key pressed: " + event.key);
+        });
+
+        // Key up (inside the input field)
+        document.getElementById("inputField").addEventListener("keyup", function() {
+            console.log("You released a key!");
+        });
+        //droup down
+        document.getElementById("dropdown").addEventListener("change", function() {
+                alert("your selected:" + this.value);
+            })
+            //focus
+        document.getElementById("focusInput").addEventListener("focus", function() {
+            this.style.backgroundColor = "yellow";
+        });
+        //blur
+        document.getElementById("blurInput").addEventListener("blur", function() {
+            this.style.backgroundColor = "pink";
+        })
+    </script>
+</body>
+
+</html>
